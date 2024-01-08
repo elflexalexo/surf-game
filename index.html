@@ -13,6 +13,22 @@
 
     <main>
       <canvas id="gameCanvas"></canvas>
+      <div id="gameStart" class="gameUI">
+        <H1>Surffy game</H1>
+        <p>Somebody dropped a suitcase from the plane!</p>
+        <p>It opened in air and money are in the water near the beach now.</p>
+        <p>You have 30 seconds to catch the money surfing on the wave! But be careful, don't leave the wave!</p>
+        <p>If you get less than 1000, you lose!</p>
+        <p>Click the start button to begin</p>
+        <button id="gameStartBtn"><p>START</p></button>       
+      </div>
+
+      <div id="gameEnd" class="gameUI">
+        <p>Game Over</p>
+        <h1>You <span id="gameResultSpan"></span></h1>
+        <h1>Final Score: <span id="endScoreSpan"></span></h1>
+        <p>refresh the Page to play again</p>
+      </div>
     </main>
     
     <footer>
@@ -21,3 +37,4 @@
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+ 
