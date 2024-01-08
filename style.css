@@ -46,3 +46,47 @@ main{
   display: flex;
   z-index: 1;
 }
+
+.gameUI{
+  width: 100%;
+  height: 100%;
+  background-color: var(--acClr);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.gameUI * {
+  text-align: center;
+  margin-top: 7px;
+}
+
+#gameStart {
+  display: flex;
+}
+
+#gameEnd {
+  display: none;
+}
+
+#gameStartBtn {
+  display: inline-block;
+  width: 95 px;
+  padding: 8px 14px;
+  text-align: center;
+  font-family: inherit;
+  border-radius: 10px;
+}
+
+#gameStartBtn p {
+  margin-top: 0;
+}
+
+#gameStartBtn:hover {
+  background-color: var(--darkClr);
+  border: 0.5px solid var(--lightClr);
+  cursor: pointer;
+  color: var(--lightClr);
+}
