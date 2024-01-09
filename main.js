@@ -78,7 +78,7 @@ class GameScene extends Phaser.Scene{
       frameRate: 14,
       repeat: -1
     });
-    //this.player.setCollideWorldBounds(true);  alternativní verze hry, kdy nelze opustit "vlnu"
+    //this.player.setCollideWorldBounds(true);  //alternativní verze hry, kdy nelze opustit "vlnu"
 
     this.target = this.physics.add.image(0,0,"euro").setOrigin(0.0);
     this.target.setMaxVelocity(0, speedDown);
@@ -150,14 +150,16 @@ class GameScene extends Phaser.Scene{
 
   gameOver(){
     this.sys.game.destroy(true);
-    if(this.points >= 10){
+    if(this.points >= 25){
       gameEndScoreSpan.textContent = this.points * 100;
-      gameResultSpan.textContent = "You WIN!";
+      gameResultSpan.textContent = "WIN! You can now buy another surfing trip.";
     }
     else {
       gameEndScoreSpan.textContent = this.points * 100;
-      gameResultSpan.textContent = "Try harder"
+      gameResultSpan.textContent = "looose. Try harder";
     }
+
+    gameEndDiv.style.display="flex";
   }
 
 }
@@ -180,6 +182,6 @@ const config = {
 const game = new Phaser.Game(config)
 
 gameStartBtn.addEventListener("click", ()=>{
-  gameStartDiv.style.display="none"
-  game.scene.resume("scene-game")
+  gameStartDiv.style.display="none";
+  game.scene.resume("scene-game");
 })
