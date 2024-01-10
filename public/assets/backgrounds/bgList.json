@@ -1,0 +1,4 @@
+[
+    {"id":1, "name":"real","root":"./assets/backgrounds/waterReal.png"},
+    {"id":2, "name":"drawn","root":"./assets/backgrounds/waterBg.png"}
+]

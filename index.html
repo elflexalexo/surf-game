@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" type="text/css" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Surffy</title>
@@ -10,15 +11,56 @@
     <header>
       <p>Surffy | Phaser based game</p>
     </header>
-
+    
     <main>
+      <script>
+        window.onload = function () {
+          let xhr = new XMLHttpRequest();
+          const url = 'http://localhost:5173/assets/backgrounds/bgList.json';
+
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 200) {
+                      // Získání dat a převedení na pole možností
+                      //console.log(xhr);
+                      let options = JSON.parse(xhr.response);
+                      //console.log(options);
+
+                      // Naplnění <select> možnostmi získanými ze serveru
+                      options.forEach(option => {
+                          let optionElement = document.createElement('option');
+                          optionElement.value = option.root; // Hodnota možnosti
+                          optionElement.textContent = option.name; // Text možnosti
+                          backgroundSelect.appendChild(optionElement);
+                      });
+                  } else {
+                      console.error('Nepodařilo se načíst možnosti pozadí. Status:', xhr.status);
+                  }
+              }
+          };
+
+          xhr.open('GET', url);
+          xhr.send();
+        }
+      </script>
+
       <canvas id="gameCanvas"></canvas>
       <div id="gameStart" class="gameUI">
         <H1>Surffy game</H1>
+
+        <label for="backgroundSelect">Vyberte pozadí:</label>
+        <select id="backgroundSelect">
+          
+        </select>
+
         <p>Somebody dropped a suitcase from the plane!</p>
         <p>It opened in air and money are in the water near the beach now.</p>
         <p>You have 30 seconds to catch the money surfing on the wave!</p>
-        <p>If you get less than 1000, you lose!</p><br>
+        <p>Be careful though, there is bunch of sharks, that not only bite you, 
+          but also steal a lot of your hard earned money. </p>
+        <p>Use arrows ← → to move your board.</p><br>
+        
+        
         <p>Click the start button to begin</p>
         <button id="gameStartBtn"><p>START</p></button>       
       </div>
@@ -26,15 +68,23 @@
       <div id="gameEnd" class="gameUI">
         <p>Game Over</p>
         <h1>You <span id="gameResultSpan"></span></h1>
-        <h1>Final Score: <span id="endScoreSpan"></span></h1>
-        <p>refresh the Page to play again</p>
+        <h1>Final Score: <span id="endScoreSpan"></span></h1><br><br>
+        
+        <form id="nameForm">
+          <p>Enter your nickname to save your Score (your score will not be saved otherwise).</p>
+          <label for="userNick">Enter your nickname:</label><br>
+          <input type="text" id="userNick" name="userNick">
+          <input type="submit" value="Continue">
+        </form>
+        <br>
+        
       </div>
     </main>
     
     <footer>
       <p>Created By sita03 2024</p>
     </footer>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
  
